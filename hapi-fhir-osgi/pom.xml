@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ca.uhn.hapi.fhir</groupId>
+		<artifactId>hapi-deployable-pom</artifactId>
+		<version>0.9-SNAPSHOT</version>
+		<relativePath>../hapi-deployable-pom/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>hapi-fhir-osgi</artifactId>
+	<packaging>bundle</packaging>
+
+	<url>http://jamesagnew.github.io/hapi-fhir/</url>
+
+	<name>HAPI FHIR - OSGi Bundle</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-base</artifactId>
+			<version>0.9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-structures-dstu</artifactId>
+			<version>0.9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-structures-dev</artifactId>
+			<version>0.9-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>	 
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>${maven_bundle_plugin_version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-DocURL>http://jamesagnew.github.io/hapi-fhir/</Bundle-DocURL>
+						<Export-Package>
+							ca.uhn.fhir.*,
+							org.hl7.fhir.*
+						</Export-Package>
+						<!--
+						<Include-Resource>
+							src/main/java,
+							target/generated-sources/tinder
+						</Include-Resource>
+						-->
+						<Import-Package>
+							<!--
+							!com.sun.*,
+							!org.relaxng.datatype.*,
+							!com.phloc.*,
+							!org.thymeleaf.*,
+							!com.ctc.wstx.stax.*,
+							!org.oclc.purl.dsdl.svrl.*,
+							org.apache.commons.io;version="2.0.1",
+							org.apache.commons.io.input;version="2.0.1",
+							-->
+							*
+						</Import-Package>
+						<Embed-Dependency>
+							*;groupId=ca.uhn.hapi.fhir;inline=true
+						</Embed-Dependency>
+					</instructions> 
+				</configuration>	
+			</plugin>		       
+		</plugins>
+	</build>
+</project>
