@@ -19,7 +19,7 @@ import org.osgi.framework.BundleContext;
   
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerMethod.class)
-public class BundleResolutionTest {
+public class BundleResolutionIT {
 
     @Inject
     private BundleContext bundleContext;
