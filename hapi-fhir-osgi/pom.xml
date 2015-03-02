@@ -21,6 +21,17 @@
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-base</artifactId>
 			<version>0.9-SNAPSHOT</version>
+			<exclusions>
+				<!-- Apache HTTP Components provide their OSGi bundles separately from the main dist -->
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpcore</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
@@ -31,6 +42,18 @@
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dev</artifactId>
 			<version>0.9-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore-osgi</artifactId>
+			<version>${apache_httpcore_version}</version>
+			<type>bundle</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-osgi</artifactId>
+			<version>${apache_httpclient_version}</version>
+			<type>bundle</type>
 		</dependency>
 	</dependencies>
 
@@ -48,23 +71,16 @@
 							ca.uhn.fhir.*,
 							org.hl7.fhir.*
 						</Export-Package>
-						<!--
-						<Include-Resource>
-							src/main/java,
-							target/generated-sources/tinder
-						</Include-Resource>
-						-->
 						<Import-Package>
-							<!--
+							<!-- Packages provided by the JRE -->
 							!com.sun.*,
-							!org.relaxng.datatype.*,
-							!com.phloc.*,
-							!org.thymeleaf.*,
-							!com.ctc.wstx.stax.*,
-							!org.oclc.purl.dsdl.svrl.*,
-							org.apache.commons.io;version="2.0.1",
-							org.apache.commons.io.input;version="2.0.1",
-							-->
+							!javax.*,
+							<!-- Optional deps -->
+							com.ctc.wstx.stax.*;resolution:=optional,
+							com.phloc.*;resolution:=optional,
+							org.oclc.purl.dsdl.svrl.*;resolution:=optional,
+							org.thymeleaf.*;resolution:=optional,
+							<!-- Everything else -->
 							*
 						</Import-Package>
 						<Embed-Dependency>
