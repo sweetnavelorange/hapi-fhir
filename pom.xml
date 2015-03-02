@@ -154,6 +154,7 @@
 		<scmPubCheckoutDirectory>${user.home}/sites/scm/hapi-fhir</scmPubCheckoutDirectory>
 
 		<!-- Plugin Versions -->
+		<apache_felix_version>3.2.2</apache_felix_version>
 		<apache_httpclient_version>4.3.6</apache_httpclient_version>
 		<apache_httpcore_version>4.4</apache_httpcore_version>
 		<commons_io_version>2.4</commons_io_version>
@@ -187,6 +188,8 @@
 		<maven_source_plugin_version>2.3</maven_source_plugin_version>
 		<mitreid-connect-version>1.1.8</mitreid-connect-version>
 		<mockito_version>1.10.17</mockito_version>
+		<pax_exam_version>3.4.0</pax_exam_version>
+		<pax_url_version>1.6.0</pax_url_version>
 		<phloc_schematron_version>2.7.1</phloc_schematron_version>
 		<phloc_commons_version>4.3.5</phloc_commons_version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
