@@ -46,10 +46,7 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore-osgi</artifactId>
-			<!-- This is the latest OSGi version of httpcore
 			<version>${apache_httpcore_version}</version>
-			-->
-			<version>4.3.3</version>
 			<type>bundle</type>
 		</dependency>
 		<dependency>
