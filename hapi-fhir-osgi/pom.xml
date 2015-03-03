@@ -140,11 +140,90 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<redirectTestOutputToFile>true</redirectTestOutputToFile>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>integration-test</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven_dependency_plugin_version}</version>
+				<executions>
+					<execution>
+						<id>copy-osgi-dependencies</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/deps</outputDirectory>
+							<artifactItems>
+								<!-- Only required to satisfy OSGi bindings -->
+								<artifactItem>
+									<groupId>javax.json</groupId>
+									<artifactId>javax.json-api</artifactId>
+									<version>1.0</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.glassfish</groupId>
+									<artifactId>javax.json</artifactId>
+									<version>1.0.4</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.apache.felix</groupId>
+									<artifactId>org.apache.felix.http.servlet-api</artifactId>
+									<version>1.0.0</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.codehaus.woodstox</groupId>
+									<artifactId>stax2-api</artifactId>
+									<version>3.1.4</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.slf4j</groupId>
+									<artifactId>slf4j-simple</artifactId>
+									<version>${slf4j_version}</version>
+								</artifactItem>
+								<!-- Product dependencies -->
+								<artifactItem>
+									<groupId>org.apache.commons</groupId>
+									<artifactId>commons-lang3</artifactId>
+									<version>${commons_lang_version}</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>commons-codec</groupId>
+									<artifactId>commons-codec</artifactId>
+									<version>${commons_codec_version}</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>commons-io</groupId>
+									<artifactId>commons-io</artifactId>
+									<version>${commons_io_version}</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.slf4j</groupId>
+									<artifactId>slf4j-api</artifactId>
+									<version>${slf4j_version}</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.apache.httpcomponents</groupId>
+									<artifactId>httpcore-osgi</artifactId>
+									<version>${apache_httpcore_version}</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.apache.httpcomponents</groupId>
+									<artifactId>httpclient-osgi</artifactId>
+									<version>${apache_httpclient_version}</version>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

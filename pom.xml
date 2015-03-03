@@ -179,6 +179,7 @@
 		<logback_version>1.1.2</logback_version>
 		<maven_assembly_plugin_version>2.4.1</maven_assembly_plugin_version>
 		<maven_bundle_plugin_version>2.5.3</maven_bundle_plugin_version>
+		<maven_dependency_plugin_version>2.10</maven_dependency_plugin_version>
 		<maven_failsafe_plugin_version>2.18.1</maven_failsafe_plugin_version>
 		<maven_javadoc_plugin_version>2.10.1</maven_javadoc_plugin_version>
 		<maven_jxr_plugin_version>2.5</maven_jxr_plugin_version>
